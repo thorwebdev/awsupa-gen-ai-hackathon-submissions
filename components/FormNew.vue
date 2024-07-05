@@ -73,12 +73,12 @@ async function handleSubmit() {
 
       <FormKit
         type="uselect"
-        label="Tags"
+        label="AWS Services"
         searchable
         :options="tagOptions"
         name="categories"
         multiple
-        placeholder="Vuejs, Nuxtjs, ..."
+        placeholder="Bedrock, Lambda, ..."
         help="Choose applicable"
         validation="required"
       />
@@ -111,6 +111,7 @@ async function handleSubmit() {
             <FormKit
               :index="index"
               type="teammember"
+              validation="required"
             />
           </div>
           <UButton icon="i-lucide-trash" color="gray" variant="solid" class="mb-1 ml-2" @click.prevent="() => node.input(value.filter((_, i) => i !== index))" />
@@ -121,12 +122,13 @@ async function handleSubmit() {
 
       <FormKit
         type="ufileupload"
-        label="Images"
+        label="Images / Demo Video / PDF Presentation"
         name="image_keys"
         :allow-multiple="true"
         :allow-reorder="true"
         :max-files="5"
         bucket-id="products"
+        validation="required"
       />
 
       <ul v-if="isHackathon" class="py-6 list-disc ml-4 text-xs text-gray-400">

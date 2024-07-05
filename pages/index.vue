@@ -59,12 +59,12 @@ definePageMeta({
 <template>
   <div class="flex flex-col">
     <NuxtLink
-      to="/hackathons/open-source-2024"
+      to="/submission"
       class="mt-6 group h-48 sm:h-[24rem] lg:h-[32rem] w-full flex flex-col justify-center items-center transition-all duration-500 rounded-2xl relative border border-gray-600 hover:border-gray-700 overflow-hidden"
     >
       <img
-        src="~~/assets/open-source-hackathan.webp"
-        alt="Supabase Ooen Source Hackathon"
+        src="~~/assets/awsupa-gen-ai.png"
+        alt="AWSupabase GenAI Hackathon"
         class="w-full h-full object-cover transition duration-500 scale-100 group-hover:scale-[1.02]"
       >
     </NuxtLink>

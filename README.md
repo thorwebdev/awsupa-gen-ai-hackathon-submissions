@@ -155,10 +155,11 @@ create or replace function public.get_related_products(parent_id uuid)
   returns setof products_view
   language plpgsql
 as $$
-begin
-  return query
-    select * from products_view where id <> parent_id order by random();
-end; $$
+  begin
+    return query
+      select * from products_view where id <> parent_id order by random();
+  end; 
+$$;
 ```
 
 `get_tags`
@@ -168,10 +169,11 @@ create or replace function public.get_tags(tag text)
   returns setof products_view
   language plpgsql
 as $$
-begin
-  return query
-    select * from products_view where tag % any(categories);
-end; $$
+  begin
+    return query
+      select * from products_view where tag % any(categories);
+  end; 
+$$;
 ```
 
 `get_supabase_tags`
@@ -181,10 +183,11 @@ create or replace function public.get_supabase_tags(tag text)
   returns setof products_view
   language plpgsql
 as $$
-begin
-  return query
-    select * from products_view where tag like any(supabase_features);
-end; $$
+  begin
+    return query
+      select * from products_view where tag like any(supabase_features);
+  end; 
+$$;
 ```
 
 ### Storage
@@ -194,13 +197,13 @@ end; $$
 - Create the following policies:
   - Give anon users READ access:
     - Allowed operations: `SELECT`
-    - Policy definition: `(bucket_id = 'products'::text)`
-  - Give anon users INSERT access:
+    - Full Policy definition: `CREATE POLICY "Anon read access" ON storage.objects FOR SELECT TO public USING (bucket_id = 'products');`
+  - Give authenicated users INSERT access:
     - Allowed operations: `INSERT`
-    - Policy definition: `((bucket_id = 'products'::text) AND (role() = 'anon'::text))`
+    - Full Policy definition: `CREATE POLICY "Anon Insert" ON storage.objects FOR INSERT TO anon WITH CHECK (bucket_id = 'products');`
   - Deny DELETE:
     - Allowed operations: `DELETE`
-    - Policy definition: `((bucket_id = 'products'::text) AND (role() = 'authenticated'::text))`
+    - Full Policy definition: `CREATE POLICY "Admin Delete" ON storage.objects FOR DELETE TO service_role USING (bucket_id = 'products');`
 
 # 🌎 Local Development
 

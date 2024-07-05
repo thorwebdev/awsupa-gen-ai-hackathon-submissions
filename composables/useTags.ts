@@ -4,24 +4,35 @@ export function useTags() {
   const supabaseFeatureOptions = [
     'Supabase Auth',
     'Supabase Database',
-    'Supabase Function',
+    'Supabase Edge Functions',
     'Supabase Storage',
     'Supabase Realtime',
   ]
 
-  const { data: tagOptions } = useLazyAsyncData('tagOptions', async () => {
-    const { data } = await client
-      .from('tags_view')
-      .select('*')
-      .order('tags', {
-        ascending: true,
-      })
+  const tagOptions = [
+    'Amazon Bedrock',
+    'Sagemaker',
+    'ECS',
+    'EC2',
+    'Lambda',
+    'S3',
+    'DynamoDB',
+    'Cognito',
+  ]
 
-    return data?.map(i => i.tags ?? '') ?? []
-  }, {
-    server: false,
-    default: () => [] as string[],
-  })
+  // const { data: tagOptions } = useLazyAsyncData('tagOptions', async () => {
+  //   const { data } = await client
+  //     .from('tags_view')
+  //     .select('*')
+  //     .order('tags', {
+  //       ascending: true,
+  //     })
+
+  //   return data?.map(i => i.tags ?? '') ?? []
+  // }, {
+  //   server: false,
+  //   default: () => [] as string[],
+  // })
 
   return {
     tagOptions,

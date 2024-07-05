@@ -28,15 +28,6 @@ async function handleSubmit(ev: Project | null) {
 
 <template>
   <div>
-    <div class="mt-8 flex justify-center ">
-      <div class="bg-black rounded-xl border px-8 py-4 bg-opacity-50 text-sm border-gray-700 flex items-center justify-between w-full max-w-[28rem] mx-auto">
-        <div>
-          For Hackathon Submission
-        </div>
-
-        <UButton label="Click here" color="gray" to="/hackathons/launch-week-x" class="ml-4" trailing-icon="i-lucide-arrow-right" />
-      </div>
-    </div>
 
     <div v-if="user?.email" class="flex justify-center mt-8">
       <FormNew :handler="handleSubmit" />
