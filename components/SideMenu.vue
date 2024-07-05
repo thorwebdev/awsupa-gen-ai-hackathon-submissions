@@ -26,10 +26,6 @@ const links = computed(() => [{
   icon: 'i-lucide-tag',
   to: '/tag',
 }, {
-  label: 'Hackathons',
-  icon: 'i-lucide-sparkles',
-  to: '/hackathons',
-}, {
   label: 'Submission',
   icon: 'i-lucide-navigation',
   to: '/submission',
