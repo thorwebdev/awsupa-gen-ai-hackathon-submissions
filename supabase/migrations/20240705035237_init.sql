@@ -10,10 +10,12 @@ create table products (
   twitter text,
   instagram text,
   images text ARRAY,
+  image_keys text ARRAY,
   slug text,
   supabase_features text ARRAY,
   approved boolean,
-  created_at timestamp default now()
+  created_at timestamp default now(),
+  team_info jsonb
 );
 
 -- enable RLS
@@ -42,6 +44,7 @@ create view products_view as
     products.twitter,
     products.instagram,
     products.images,
+    products.image_keys,
     products.slug,
     products.supabase_features,
     products.approved,

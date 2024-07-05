@@ -49,12 +49,6 @@ onMounted(() => {
       <slot />
 
       <hr class="mt-12 mb-4 border-gray-700">
-
-      <div class="text-sm text-gray-500">
-        A project by <NuxtLink to="https://twitter.com/zernonia" target="_blank">
-          Zernonia
-        </NuxtLink>
-      </div>
     </div>
   </div>
 </template>

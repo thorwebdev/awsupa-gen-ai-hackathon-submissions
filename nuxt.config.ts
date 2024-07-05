@@ -114,5 +114,5 @@ export default defineNuxtConfig({
     prerender: { crawlLinks: false },
   },
 
-  plugins: ['~/plugins/analytics.client.ts'],
+  plugins: [],
 })
